@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{%  load static %}
+ <link href="{% static 'css/details_styles.css' %}" rel="stylesheet" />
+    <div class="container">
+        <div class="fw-bold display-4">Add product</div>
+    <form method="post" enctype="multipart/form-data" class="d-grid gap-3">
+        {% csrf_token %}
+        <div class="form-group ">
+          <label for="formGroupExampleInput" class="fw-bold">name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" name="name" placeholder="product name">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput" class="fw-bold">price</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" name="price" placeholder="product price">
+          </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2" class="fw-bold">description</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="description" name="desc">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1" class="fw-bold">image</label>
+            <input type="file" class="form-control-file" accept="image/*" name="upload" id="exampleFormControlFile1">
+          </div>
+          <button type="submit" name="add product" value="add product" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+{% endblock %}

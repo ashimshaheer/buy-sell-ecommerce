@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{%  load static %}
+ <link href="{% static 'css/details_styles.css' %}" rel="stylesheet" />
+    <div class="container">
+        <div class="fw-bold display-4">Add profile</div>
+    <form method="post" enctype="multipart/form-data" class="d-grid gap-3">
+        {% csrf_token %}
+        <div class="form-group ">
+          <label for="formGroupExampleInput" class="fw-bold">contact number</label>
+          <input type="text" class="form-control" id="contactnumber" name="contactnumber" placeholder="67890678">
+        </div>
+      
+        <div class="form-group">
+            <label for="exampleFormControlFile1" class="fw-bold">image</label>
+            <input type="file" class="form-control-file" accept="image/*" name="upload" id="upload">
+          </div>
+          <button type="submit" name="add profile" value="createprofile" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+{% endblock %}

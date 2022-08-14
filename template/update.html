@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% load static %}
+    <link href="{% static 'css/details_styles.css' %}" rel="stylesheet" />
+     <!-- Navigation-->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">Start Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">All Products</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="fw-bold display-4">update product</div>
+    <form method="post" enctype="multipart/form-data" class="d-grid gap-3">
+        {% csrf_token %}
+        <div class="form-group ">
+          <label for="formGroupExampleInput" class="fw-bold">name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" value="{{products.name}}" name="name" placeholder="product name">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput" class="fw-bold">price</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" value="{{products.price}}" name="price" placeholder="product price">
+          </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2" class="fw-bold">description</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="description" value="{{products.desc}}" name="desc">
+        </div>
+        <div class="form-group">
+            <img src="{{products.image.url}}" alt="">
+            <label for="exampleFormControlFile1" class="fw-bold">image</label>
+            <input type="file" class="form-control-file" accept="image/*" name="upload" id="exampleFormControlFile1">
+          </div>
+          <button type="submit" name="add product" value="add product" class="btn btn-primary">update product</button>
+      </form>
+    </div>
+ {% endblock %}

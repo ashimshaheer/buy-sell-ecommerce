@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row text-center text-white mb-5">
+        <div class="col-lg-7 mx-auto">
+            <h1 class="display-4">Product List</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- List group-->
+            <ul class="list-group shadow">
+                <!-- list group item-->
+            {% for i in products%}
+                <li class="list-group-item">
+                    <!-- Custom content-->
+                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                        <div class="media-body order-2 order-lg-1">
+                            <h5 class="mt-0 font-weight-bold mb-2">{{i.name}}</h5>
+                            <p class="font-italic text-muted mb-0 small">{{i.desc}}</p>
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <h6 class="font-weight-bold my-2">{{i.price}}</h6>
+                                <ul class="list-inline small">
+
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                                   
+                                </ul>
+                            </div>   
+                        </div>
+                       
+                        <img src="{{i.image.url}}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    </div> 
+                    <div class="d-flex justify-content-end ">
+                        <a class="btn btn-primary m-2 "  type="button" href="{% url 'mainpage:update_product' i.id %}">Edit</a>
+                        <a class= "btn btn-primary m-2  " typpe="button" href="{% url 'mainpage:delete_product' i.id %}">delete</a>
+                    </div>
+                   <!-- End -->
+                </li> <!-- End -->
+                
+                {% endfor %}
+            </ul> <!-- End -->
+        </div>
+    </div>
+</div> 
+{% endblock %}
